@@ -20,13 +20,9 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <x-nav href="/"
-                               >Home</x-nav>
-                            <x-nav href="/about"
-                               >About</x-nav>
-                            <x-nav href="/contact"
-                               >Contact</x-nav>
+                            <x-nav href="/" :active="request()->is('/')">Home</x-nav>
+                            <x-nav href="/about" :active="request()->is('about')">About</x-nav>
+                            <x-nav href="/jobs" :active="request()->is('jobs')">Jobs</x-nav>
                         </div>
                     </div>
                 </div>
@@ -43,7 +39,7 @@
     </header>
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            <!-- Your content -->
+            {{ $main }}
         </div>
     </main>
 </div>
