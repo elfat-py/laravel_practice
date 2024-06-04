@@ -4,7 +4,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 Route::get('/', function () {
-    $jobs = Job::all();
+//    $jobs = Job::all();
 //    dd($jobs);
     return view('home');
 });
