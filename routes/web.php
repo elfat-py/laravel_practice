@@ -1,6 +1,4 @@
 <?php
-
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
@@ -17,11 +15,9 @@ Route::get('/jobs', function () {
 
 Route::post('/jobs', function(){
 //    dd(request()->all());
-
     request()->validate([
         'title' => ['required', 'min:3'],
         'salary' => ['required']
-
     ]);
     Job::create([
         'title' => request('title'),
@@ -35,15 +31,34 @@ Route::get('/jobs/create', function(){
     return view('jobs.create');
 });
 
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
+// SHOW
+Route::get('/jobs/{job}', function (Job $job) {
     return view('jobs.show', ['job' => $job]);
 });
 
-
-Route::get('/jobs/{id}/edit', function ($id) {
-    $job = Job::find($id);
+// EDIT
+Route::get('/jobs/{job}/edit', function (Job $job) {
     return view('jobs.edit', ['job' => $job]);
+});
+
+// UPDATE
+Route::patch('/jobs/{job}', function(Job $job){
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
+
+    $job-> update([
+        'title' => request('title'),
+        'salary' => request('salary')
+    ]);
+    return redirect('/jobs/' . $job->id);
+});
+
+// DELETE
+Route::delete('/jobs/{job}', function(Job $job){
+    $job->delete();
+    return redirect('/jobs');
 });
 
 Route::get('/about', function () {

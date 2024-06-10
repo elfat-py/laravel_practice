@@ -1,6 +1,6 @@
 <x-layout>
-    <x-slot:heading>Looking for jobs!?</x-slot:heading>
-    <x-slot:main>
+    <x-slot:heading>Create a job!</x-slot:heading>
+    <x-slot:slot>
         <div class="space-y-4">
         @foreach($jobs as $job)
                 <a href="/jobs/{{ $job['id'] }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
@@ -14,5 +14,6 @@
         <div class="mt-4">
             {{ $jobs->links() }} <!-- Pagination links -->
         </div>
-    </x-slot:main>
+    </x-slot:slot>
+
 </x-layout>

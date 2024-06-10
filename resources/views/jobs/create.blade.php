@@ -1,6 +1,6 @@
 <x-layout>
-    <x-slot:heading>Create job</x-slot:heading>
-    <x-slot:main>
+    <x-slot:heading>Create a new job!</x-slot:heading>
+    <x-slot:slot>
         <form method="POST" action="/jobs">
             @csrf
             <div class="space-y-12">
@@ -17,7 +17,7 @@
                                     class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                                     <input type="text" name="title" id="title"
                                            class="block flex-1 border-0 bg-transparent py-1.5 px-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                                           placeholder="Programmer" required >
+                                           placeholder="Programmer" required>
                                 </div>
                                 @error('title')
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -42,8 +42,9 @@
                         </div>
                         @if($errors->any())
                             <div class="sm:col-span-6">
-                                <div class="mt-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
-                                     role="alert">
+                                <div
+                                    class="mt-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                                    role="alert">
                                     <strong class="font-bold">Holy smokes!</strong>
                                     <span class="block sm:inline">Something seriously bad happened.</span>
                                     <ul class="mt-3 list-disc list-inside text-sm text-red-600">
@@ -65,5 +66,5 @@
                 </button>
             </div>
         </form>
-    </x-slot:main>
+    </x-slot:slot>
 </x-layout>
